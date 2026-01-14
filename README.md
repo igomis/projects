@@ -5,17 +5,21 @@ Aplica el que has vist als temes 03, 04 i 05 per construir un petit gestor de **
 
 ## Com començar (Sail + Docker)
 
-1. Duplica `.env.example` a `.env`.
-2. Executa:
+1. Executa:
 
 ```bash
   chmod 777 storage -R
    docker run --rm -v $(pwd):/app -w /app laravelsail/php84-composer:latest composer install
-   ./vendor/bin/sail up -d
-   ./vendor/bin/sail artisan key:generate
-   ./vendor/bin/sail artisan migrate --seed
    docker run --rm -v $(pwd):/app -w /app node:20 npm install
    docker run --rm -v $(pwd):/app -w /app node:20 npm run build
+   ./vendor/bin/sail up -d
+  
+```
+2. Executa
+
+```bash
+./vendor/bin/sail artisan key:generate
+./vendor/bin/sail artisan migrate --seed
 ```
 
 3. Comprova: `http://localhost`. 
