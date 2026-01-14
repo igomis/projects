@@ -28,6 +28,16 @@ class TeamsSeeder extends Seeder
                 'country' => 'Spain',
                 'bio' => 'Equip local de desenvolupament web.',
             ],
+            [
+                'name' => 'Barcelona Marketing Team',
+                'country' => 'Catalunya',
+                'bio' => 'Equip local de Marketing.',
+            ],
+            [
+                'name' => 'Batoi Dev Team',
+                'country' => 'Pais Valencià',
+                'bio' => 'Equip local de desenvolupament web.',
+            ],
         ];
 
         foreach ($teams as $team) {

@@ -168,6 +168,26 @@ class ProjectsSeeder extends Seeder
                 'team_id' => $teams['Valencia Dev Team'] ?? null,
                 'technologies' => ['Web'],
             ],
+            [
+                'title' => 'App de Magatzem',
+                'publication_year' => 2020,
+                'price' => 11.80,
+                'stock' => 2,
+                'description' => 'Inventari mobil per a magatzem.',
+                'is_visible' => true,
+                'team_id' => $teams['Batoi Dev Team'] ?? null,
+                'technologies' => ['Mobile'],
+            ],
+            [
+                'title' => 'App de Magatzem',
+                'publication_year' => 2020,
+                'price' => 11.80,
+                'stock' => 2,
+                'description' => 'Inventari mobil per a magatzem.',
+                'is_visible' => true,
+                'team_id' => $teams['Batoi Dev Team'] ?? null,
+                'technologies' => ['Mobile'],
+            ],
         ];
 
         foreach ($projects as $data) {

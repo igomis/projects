@@ -25,12 +25,26 @@ Aplica el que has vist als temes 03, 04 i 05 per construir un petit gestor de **
 3. Comprova: `http://localhost`. 
 4. Implementa els casos d’ús demanats.
 
+## Dades inicials
+
+Ja tens migracions i models per a:
+
+- `teams` (equips) (`name`, `country`, `bio`)
+- `technologies` (tecnologies) (`name`)
+- `projects` (projectes) (`title`, `publication_year`, `price`, `stock`, `description`, `is_visible`, `team_id`) amb pivot `project_technology`
+- `users` amb camp `role` (`admin`/`user`)
+- Seeder crea:
+  - Usuari `admin@example.test` / password `secret` (rol `admin`)
+  - Usuario `user@example.test` / password `secret` (rol `user`)
+  - 6 equips, 8 tecnologies, molts projectes relacionats
+
+
 
 ## Objectiu i requisits funcionals
 
-- Llistar projectes amb paginació i estat visible/no visible.
+- Llistar projectes amb paginació.
 - Detall d’un projecte amb equip, tecnologies i stock (p. ex. llicencies o disponibilitat).
-- CRUD de projectes (crear, editar, eliminar) només per usuari autenticat. Alta/edició han de permetre seleccionar equip i múltiples tecnologies.
+- CRUD de projectes només per usuari autenticat (crear, editar, eliminar(administrador)).  Alta/edició han de permetre seleccionar equip i múltiples tecnologies.
 - Afegir nova entitat: crea model, migració i seeder per a `partners` amb camps `name` (string) i `country` (string nullable). Afegeix relació `projects.partner_id` (foreign key nullable) i mostra el partner al llistat/detall del projecte. Sembra almenys 2 partners i associa-les als projectes de prova.
 
 ## Requisits tècnics (allò que s’avalua)
@@ -44,27 +58,8 @@ Aplica el que has vist als temes 03, 04 i 05 per construir un petit gestor de **
   - Protegeix mass assignment (`$fillable`) i CSRF (directiva Blade).
 - **Presentació**: Blade net, layout comú, flash messages (èxit/errades). No cal estil boig; funcional i clar.
 
-## Dades inicials
 
-Ja tens migracions i models per a:
 
-- `teams` (equips) (`name`, `country`, `bio`)
-- `technologies` (tecnologies) (`name`)
-- `projects` (projectes) (`title`, `publication_year`, `price`, `stock`, `description`, `is_visible`, `team_id`) amb pivot `project_technology`
-- `users` amb camp `role` (`admin`/`user`)
-- Seeder crea:
-  - Usuari `admin@example.test` / password `secret` (rol `admin`)
-  - 3 equips, 4 tecnologies, 4 projectes relacionats
-
-## Checklist ràpida (submergeix-te en 3h)
-
-- [ ] Rutes web organitzades (`Route::resource('projects', ...)`), middlewares `auth`/`can`.
-- [ ] Controllers amb validació, redireccions amb missatges, ús de policies.
-- [ ] Vistes Blade per llistat, detall, formularis create/edit (amb errors i `old()`).
-- [ ] Login/logout bàsic i enllaços de navegació condicionals.
-- [ ] Paginacio a l’index.
-- [ ] Control d’autoriazació per a accions protegides.
-- [ ] Nova entitat `publishers`: migració, model, seeder, relació amb projectes i visualització al llistat/detall.
 
 ## Avaluació (50% funcional, 30% codi, 20% seguretat)
 
@@ -76,6 +71,16 @@ Ja tens migracions i models per a:
 ## Notes
 
 - Pots crear `FormRequest`, `Policy`, seeders addicionals o middlewares si ho necessites.
+
+## Checklist ràpida (submergeix-te en 3h)
+
+- [ ] Rutes per poder accedir al controlador 
+- [ ] Controllers amb validació, redireccions amb missatges, ús de policies.
+- [ ] Vistes Blade per llistat, detall, formularis create/edit (amb errors i `old()`).
+- [ ] Login/logout bàsic i enllaços de navegació condicionals.
+- [ ] Paginacio a l’index.
+- [ ] Control d’autoriazació per a accions protegides.
+- [ ] Nova entitat `publishers`: migració, model, seeder, relació amb projectes i visualització al llistat/detall.
 
  ## Ordre suggerida
 

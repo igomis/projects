@@ -17,6 +17,12 @@ class TechnologiesSeeder extends Seeder
             ['name' => 'Mobile'],
             ['name' => 'DevOps'],
             ['name' => 'AI'],
+            ['name' => 'Data Science'],
+            ['name' => 'Cybersecurity'],
+            ['name' => 'Cloud Computing'],
+            ['name' => 'Blockchain'],
+            ['name' => 'IoT'],
+            ['name' => 'AR/VR'],
         ];
 
         foreach ($technologies as $technology) {
