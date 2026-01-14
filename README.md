@@ -2,6 +2,26 @@
 
 Aplica el que has vist als temes 03, 04 i 05 per construir un petit gestor de **projectes de programari** en Laravel **sense API, només web (Blade + controllers)**.
 
+
+## Com començar (Sail + Docker)
+
+1. Duplica `.env.example` a `.env`.
+2. Executa:
+```bash
+   docker run --rm -v $(pwd):/app -w /app laravelsail/php84-composer:latest composer install
+   ./vendor/bin/sail up -d
+   ./vendor/bin/sail artisan migrate --seed
+    chmod 777 storage -R
+   ./vendor/bin/sail artisan key:generate
+   rm -rf node_modules package-lock.json
+   docker run --rm -v $(pwd):/app -w /app node:20 npm install
+   docker run --rm -v $(pwd):/app -w /app node:20 npm run build
+
+```
+3. Comprova: `http://localhost`. 
+4. Implementa els casos d’ús demanats.
+
+
 ## Objectiu i requisits funcionals
 
 - Llistar projectes amb paginació i estat visible/no visible.
@@ -32,46 +52,6 @@ Ja tens migracions i models per a:
   - Usuari `admin@example.test` / password `secret` (rol `admin`)
   - 3 equips, 4 tecnologies, 4 projectes relacionats
 
-## Com començar (Sail + Docker)
-
-1. Duplica `.env.example` a `.env`.
-2. Instal·la dependències amb el contenidor de Sail:
-   ```bash
-   docker run --rm -v $(pwd):/app -w /app laravelsail/php84-composer:latest composer install
-   ```
-3. Configura la BD en `.env`:
-   - `DB_CONNECTION=mysql`
-   - `DB_HOST=mysql`
-   - `DB_PORT=3306`
-   - `DB_DATABASE=laravel`
-   - `DB_USERNAME=sail`
-   - `DB_PASSWORD=password`
-4. Alça l’entorn:
-   ```bash
-   ./vendor/bin/sail up -d
-   ```
-5. Migra i sembra:
-   ```bash
-   ./vendor/bin/sail artisan migrate --seed
-   ```
-6. Dona permisos a la carpeta storage
- ```bash
-   chmod 777 storage -R
-   ```
-7. Genera la clau de laravel
- ```bash
-   ./vendor/bin/sail artisan key:generate
- ```
-8. InstaL·la vite
-  ```bash
-rm -rf node_modules package-lock.json
-docker run --rm -v $(pwd):/app -w /app node:20 npm install
-docker run --rm -v $(pwd):/app -w /app node:20 npm run build
-
- ```
-8. Servei web: `http://localhost`. 
-9. Implementa els casos d’ús demanats.
-
 ## Checklist ràpida (submergeix-te en 3h)
 
 - [ ] Rutes web organitzades (`Route::resource('projects', ...)`), middlewares `auth`/`can`.
@@ -93,7 +73,7 @@ docker run --rm -v $(pwd):/app -w /app node:20 npm run build
 
 - Pots crear `FormRequest`, `Policy`, seeders addicionals o middlewares si ho necessites.
 
-## Ordre suggerida
+ ## Ordre suggerida
 
 - Dona d'alta les rutes i el controlador ProjectController (resource) per accedir a les vistes de projects
 - Modifica la vista wellcome per afegir la ruta al login en el botó d'entrar
