@@ -7,17 +7,17 @@ Aplica el que has vist als temes 03, 04 i 05 per construir un petit gestor de **
 
 1. Duplica `.env.example` a `.env`.
 2. Executa:
+
 ```bash
+  chmod 777 storage -R
    docker run --rm -v $(pwd):/app -w /app laravelsail/php84-composer:latest composer install
    ./vendor/bin/sail up -d
-   ./vendor/bin/sail artisan migrate --seed
-    chmod 777 storage -R
    ./vendor/bin/sail artisan key:generate
-   rm -rf node_modules package-lock.json
+   ./vendor/bin/sail artisan migrate --seed
    docker run --rm -v $(pwd):/app -w /app node:20 npm install
    docker run --rm -v $(pwd):/app -w /app node:20 npm run build
-
 ```
+
 3. Comprova: `http://localhost`. 
 4. Implementa els casos d’ús demanats.
 
