@@ -49,9 +49,7 @@ Ja tens migracions i models per a:
   - Usuari `admin@example.test` / password `secret` (rol `admin`)
   - Usuario `user@example.test` / password `secret` (rol `user`)
   - 6 equips, 8 tecnologies, molts projectes relacionats
-
-
-
+ 
 ## Objectiu i requisits funcionals
 
 - Llistar projectes amb paginació.
@@ -59,54 +57,45 @@ Ja tens migracions i models per a:
 - CRUD de projectes només per usuari autenticat (crear, editar, eliminar(administrador)).  Alta/edició han de permetre seleccionar equip i múltiples tecnologies.
 - Afegir nova entitat: crea model, migració i seeder per a `partners` amb camps `name` (string) i `country` (string nullable). Afegeix relació `projects.partner_id` (foreign key nullable) i mostra el partner al llistat/detall del projecte. Sembra almenys 2 partners i associa-les als projectes de prova.
 
-## Requisits tècnics (allò que s’avalua)
+## Requisits tècnics
 
-- **MVC**: `routes/web.php`, controllers amb resource (route model binding), models amb relacions i `$fillable`.
-- **Dades**: migracions i seeders preparades. Pots modificar-les si ho necessites. Usa Eloquent/Query Builder per a consultes i paginacio.
-- **Seguretat**:
-  - Formularis amb validació servidor (`FormRequest` o `validate()`), missatges d’error i `old()`.
-  - Autenticació amb guard per defecte (sessions). Login/logout amb `Auth::attempt()`. Usa l’usuari sembrat.
-  - Autoria/autoriazació: policy o gate (p. ex. `ProjectPolicy`). Només rol `admin` pot eliminar; crear/editar almenys per rol `admin` (o `user` autenticat, segons la teua política).
-  - Protegeix mass assignment (`$fillable`) i CSRF (directiva Blade).
-- **Presentació**: Blade net, layout comú, flash messages (èxit/errades). No cal estil boig; funcional i clar.
-
-
-
-
-## Avaluació (50% funcional, 30% codi, 20% seguretat)
-
-- Funcional: llista paginada, detall, CRUD, navegació i missatges.
-- Codi: ús correcte de MVC, neteja, reutilització de layout/components, ús d’Eloquent i Route Model Binding; inclou la nova entitat `publishers`.
-- Seguretat: validació, CSRF, mass assignment, auth + policy/gate per rol.
-- Es valora (opcional): CRUD d’equips/tecnologies, tests bàsics, paginació personalitzada, estat visible.
+- **MVC bàsic**: rutes, controllers i models.
+- **Dades**: usa Eloquent per llegir/guardar i aprofita les migracions/seeders existents.
+- **Seguretat mínima**: validació de formularis, autoritzacions. 
+- **Presentació**: vistes Blade clares amb layout comú i missatges d’èxit/errada.
+  
 
 ## Notes
 
 - Pots crear `FormRequest`, `Policy`, seeders addicionals o middlewares si ho necessites.
 
-## Checklist ràpida (submergeix-te en 3h)
+## Checklist puntuada (10 punts)
 
-- [ ] Rutes per poder accedir al controlador 
-- [ ] Controllers amb validació, redireccions amb missatges, ús de policies.
-- [ ] Vistes Blade per llistat, detall, formularis create/edit (amb errors i `old()`).
-- [ ] Login/logout bàsic i enllaços de navegació condicionals.
-- [ ] Paginacio a l’index.
-- [ ] Control d’autoriazació per a accions protegides.
-- [ ] Nova entitat `publishers`: migració, model, seeder, relació amb projectes i visualització al llistat/detall.
+Part del projecte base ja esta resolt; completa o ajusta el que falte.
 
- ## Ordre suggerida
-
-- Dona d'alta les rutes i el controlador ProjectController (resource) per accedir a les vistes de projects
-- Modifica la vista wellcome per afegir la ruta al login en el botó d'entrar
-- Modifica la vista projects/index per a que mostre els projectes de la bbdd i habilita els enllaços
-- Fes que la ruta dashboard rediriguisca al index de projectController.
-- Crea els 
-- Prepara models i relacions (Project, Team, Technology) i comprova els fillable/casts
-- Afegeix la nova entitat `publishers`: migracio, model, seeder i relacio a projects
-- Ajusta el seeder de projectes per associar equips, tecnologies i partner
-- Implementa la paginacio a l'index
-- Monta formularis create/edit amb validacio i missatges d'error + old()
-- Implementa auth login/logout i enllaços de navegacio condicionals
-- Afegeix policy/gate per crear/editar/eliminar (rol admin)
-- Revisa flash messages i flux complet CRUD
-# projects
+- [ ] **1.0 punt**: Enllacos de navegacio (welcome -> login) i dashboard que redirigisca a `projects.index`.
+  - [ ] Afegir enllac al login en la vista welcome.
+  - [ ] Redirigir la ruta dashboard a `projects.index`.
+- [ ] **2.0 punts**: Llistat de projectes amb paginacio i enllacos al detall.
+  - [ ] Ruta index i controlador per obtenir projectes amb paginacio.
+  - [ ] Vista `projects/index` amb taula o llistat i enllacos al detall.
+  - [ ] Afegir enllac a crear projecte (si hi ha permis) i missatge si no hi ha dades.
+  - [ ] Paginació dels resultats.
+- [ ] **1.0 punt**: Detall de projecte amb equip, tecnologies, stock i partner.
+  - [ ] Ruta show i controlador amb relacions carregades.
+  - [ ] Vista `projects/show` mostrant camps i relacions.
+- [ ] **3.0 punts**: CRUD de projectes amb formularis (create/edit), validacio, `old()` i missatges flash.
+  - [ ] Formularis create/edit amb camps i seleccions (equip, tecnologies, partner).
+  - [ ] Validacio en store/update i retorn amb `old()` i errors.
+  - [ ] Accions store/update/delete amb missatges flash.
+  - [ ] Vincular tecnologies (many-to-many) en crear/editar.
+  - [ ] Protegir rutes de creacio/edicio amb middleware d'autenticacio.
+- [ ] **1.5 punts**: Autenticacio i autoritzacio (login/logout i policy/gate per rol admin).
+  - [ ] Controlar enllacos de navegacio.
+  - [ ] Policy o gate per crear/editar/eliminar segons rol.
+  - [ ] Amagar botons d'accions segons permisos (crear, editar, eliminar).
+  - [ ] Gestionar l'intent d'acces no autoritzat amb missatge o redireccio.
+- [ ] **1.5 punt**: Nova entitat `publishers` (migracio, model, seeder, relacio i visualitzacio).
+  - [ ] Crear migracio i model `Publisher`.
+  - [ ] Afegir seeder i dades de prova.
+  - [ ] Relacio amb `projects` i mostrar-la en llistat/detall.
