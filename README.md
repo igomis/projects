@@ -2,6 +2,18 @@
 
 Aplica el que has vist als temes 03, 04 i 05 per construir un petit gestor de **projectes de programari** en Laravel **sense API, només web (Blade + controllers)**.
 
+## Documentacio offline
+
+Pots accedir als apunts i a la documentacio de Laravel directament des del repositori amb enllacos relatius:
+
+- Apunts:
+  - [`documentacio/apunts/03MVC_Laravel.md`](documentacio/apunts/03MVC_Laravel.md)
+  - [`documentacio/apunts/04dades_Laravel.md`](documentacio/apunts/04dades_Laravel.md)
+  - [`documentacio/apunts/05seguretat_Laravel.md`](documentacio/apunts/05seguretat_Laravel.md)
+- Laravel: [`documentacio/laravel/README.md`](documentacio/laravel/README.md) (i la resta de fitxers dins de `documentacio/laravel/`)
+
+Si els obris des d'un editor o visor Markdown local, funcionen offline sense necessitat d'Internet.
+
 
 ## Com començar (Sail + Docker)
 
