@@ -65,10 +65,6 @@ Ja tens migracions i models per a:
 - **Presentació**: vistes Blade clares amb layout comú i missatges d’èxit/errada.
   
 
-## Notes
-
-- Pots crear `FormRequest`, `Policy`, seeders addicionals o middlewares si ho necessites.
-
 ## Checklist puntuada (10 punts)
 
 Part del projecte base ja esta resolt; completa o ajusta el que falte.

@@ -49,7 +49,7 @@
                 </main>
                 <section class="mx-auto max-w-6xl px-6 pb-10">
                     <details class="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-sm">
-                        <summary class="cursor-pointer text-sm font-semibold uppercase tracking-wide text-slate-500">Ajuda (README)</summary>
+                        <summary class="cursor-pointer text-sm font-semibold uppercase tracking-wide text-slate-500">README</summary>
                         <div class="mt-4 max-h-80 overflow-auto rounded-2xl border border-slate-200 bg-slate-50 p-4 text-xs text-slate-700">
                             <pre class="whitespace-pre-wrap">{{ file_get_contents(base_path('README.md')) }}</pre>
                         </div>
@@ -58,10 +58,12 @@
                 <footer class="border-t border-slate-200/70 bg-white/70">
                     <div class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-6 py-6 text-sm text-slate-600 md:flex-row md:items-center">
                         <p>Gestor de projectes de programari per a l'examen MVC.</p>
-                        <div class="flex gap-4">
-                            <a class="hover:text-slate-900" href="#">Ajuda</a>
-                            <a class="hover:text-slate-900" href="#">Política</a>
-                            <a class="hover:text-slate-900" href="#">Contacte</a>
+                        <div class="flex flex-wrap gap-4">
+                            <a class="hover:text-slate-900" href="{{ asset('README.md') }}">README</a>
+                            <a class="hover:text-slate-900" href="{{ asset('documentacio/apunts/03MVC_Laravel.md') }}">Apunts 03</a>
+                            <a class="hover:text-slate-900" href="{{ asset('documentacio/apunts/04dades_Laravel.md') }}">Apunts 04</a>
+                            <a class="hover:text-slate-900" href="{{ asset('documentacio/apunts/05seguretat_Laravel.md') }}">Apunts 05</a>
+                            <a class="hover:text-slate-900" href="{{ asset('documentacio/laravel/README.md') }}">Documentació Laravel</a>
                         </div>
                     </div>
                 </footer>
