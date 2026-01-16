@@ -63,7 +63,7 @@
                             <a class="hover:text-slate-900" href="{{ asset('documentacio/apunts/03MVC_Laravel.md') }}">Apunts 03</a>
                             <a class="hover:text-slate-900" href="{{ asset('documentacio/apunts/04dades_Laravel.md') }}">Apunts 04</a>
                             <a class="hover:text-slate-900" href="{{ asset('documentacio/apunts/05seguretat_Laravel.md') }}">Apunts 05</a>
-                            <a class="hover:text-slate-900" href="{{ asset('documentacio/laravel/README.md') }}">Documentació Laravel</a>
+                            <a class="hover:text-slate-900" href="{{ asset('documentacio/docs/index.md') }}">Documentació Laravel</a>
                         </div>
                     </div>
                 </footer>
